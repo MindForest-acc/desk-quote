@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-CP = Path.home() / "Documents/claudecode/desk-quote/Resources/corpus.json"
+CP = Path.home() / "Documents/claudecode/paperweight/Resources/corpus.json"
 d = json.loads(CP.read_text(encoding="utf-8"))
 
 d["books"]["zhuangzi"] = {"title": "庄子", "author": "庄周", "seal": "逍遥"}

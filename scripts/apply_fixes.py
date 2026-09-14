@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, re, sys
 from pathlib import Path
 
-CP = Path.home() / "Documents/claudecode/desk-quote/Resources/corpus.json"
+CP = Path.home() / "Documents/claudecode/paperweight/Resources/corpus.json"
 d = json.loads(CP.read_text(encoding="utf-8"))
 qs = d["quotes"]
 by_text = {q["text"]: q for q in qs}

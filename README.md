@@ -1,4 +1,4 @@
-# 案头 DeskQuote
+# 镇纸 Paperweight
 
 一张常驻 macOS 桌面的宣纸卡片，随机显示《孙子兵法》《庄子》《墨子》《王阳明心学》《曾国藩家书》《毛泽东选集》里的句子，每条都配原文出处与白话释义。
 
@@ -11,7 +11,7 @@
 ## 安装
 
 ```bash
-./build.sh && open 案头.app
+./build.sh && open 镇纸.app
 ```
 
 需要 macOS 14+ 与 Xcode 命令行工具。构建产物 1.7 MB，纯 Swift，无第三方依赖。

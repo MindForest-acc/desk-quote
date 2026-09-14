@@ -1,6 +1,6 @@
 import AppKit
 
-/// 生成 App 图标：宣纸底 + 朱砂闲章「案头」。
+/// 生成 App 图标：宣纸底 + 朱砂闲章「镇纸」。
 /// 用与卡片同一套颜色和字体，图标和产品是同一件东西。
 func draw(_ side: CGFloat) -> NSImage {
     let img = NSImage(size: NSSize(width: side, height: side))
@@ -33,7 +33,7 @@ func draw(_ side: CGFloat) -> NSImage {
     let attrs: [NSAttributedString.Key: Any] = [
         .font: font, .foregroundColor: NSColor(srgbRed: 0.965, green: 0.945, blue: 0.905, alpha: 1),
     ]
-    for (i, ch) in "案头".enumerated() {
+    for (i, ch) in "镇纸".enumerated() {
         let str = NSAttributedString(string: String(ch), attributes: attrs)
         let sz = str.size()
         str.draw(at: NSPoint(x: seal.midX - sz.width / 2,

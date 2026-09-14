@@ -3,9 +3,9 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-APP="案头.app"
-BIN="DeskQuote"
-ID="co.mindorigin.deskquote"
+APP="镇纸.app"
+BIN="Paperweight"
+ID="co.mindorigin.paperweight"
 CONTENTS="$APP/Contents"
 
 rm -rf "$APP"
@@ -15,8 +15,8 @@ cat > "$CONTENTS/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>CFBundleName</key><string>案头</string>
-  <key>CFBundleDisplayName</key><string>案头</string>
+  <key>CFBundleName</key><string>镇纸</string>
+  <key>CFBundleDisplayName</key><string>镇纸</string>
   <key>CFBundleExecutable</key><string>$BIN</string>
   <key>CFBundleIdentifier</key><string>$ID</string>
   <key>CFBundlePackageType</key><string>APPL</string>
