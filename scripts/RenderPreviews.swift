@@ -8,7 +8,7 @@ let outDir = URL(fileURLWithPath: CommandLine.arguments.count > 1 ? CommandLine.
 
 func render(_ quote: Quote, dark: Bool, note: Bool, scale: CGFloat = 2) -> NSImage {
     let theme = Theme.of(book: quote.book, dark: dark)
-    let vertical = TextLayout.fitsVertical(quote.text)
+    let vertical = false
     let view = CardView(quote: quote, book: corpus.book(of: quote), theme: theme,
                         vertical: vertical, showNote: note,
                         isFavorite: false, width: 340,
@@ -36,21 +36,14 @@ func save(_ img: NSImage, _ name: String) {
     print("  \(name)  \(Int(img.size.width))×\(Int(img.size.height))")
 }
 
-/// 每本书各取一条短句（触发竖排）和一条长句（横排）
-let picks: [(String, Bool)] = [
-    ("sunzi", true), ("sunzi", false),
-    ("zhuangzi", true), ("zhuangzi", false),
-    ("mozi", true), ("mozi", false),
-    ("yangming", true), ("yangming", false),
-    ("maoxuan", true), ("maoxuan", false),
-]
-for (book, wantVertical) in picks {
-    let pool = corpus.quotes.filter {
-        $0.book == book && TextLayout.fitsVertical($0.text) == wantVertical
+/// 每本书各取一条短句与一条长句，全部横排（产品默认）
+let picks = ["sunzi", "zhuangzi", "mozi", "yangming", "maoxuan"]
+for book in picks {
+    for (tag, range) in [("短", 0 ... 12), ("长", 30 ... 200)] {
+        let pool = corpus.quotes.filter { $0.book == book && range.contains($0.text.count) }
+        guard let q = pool.randomElement() else { continue }
+        save(render(q, dark: false, note: true), "\(book)-\(tag)-light.png")
+        save(render(q, dark: true, note: true), "\(book)-\(tag)-dark.png")
     }
-    guard let q = pool.randomElement() else { continue }
-    let tag = wantVertical ? "竖" : "横"
-    save(render(q, dark: false, note: true), "\(book)-\(tag)-light.png")
-    save(render(q, dark: true, note: true), "\(book)-\(tag)-dark.png")
 }
 print("完成 → \(outDir.path)")
