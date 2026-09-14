@@ -1,0 +1,5 @@
+案头.app/
+venv/
+sources/
+*.dSYM/
+.DS_Store
