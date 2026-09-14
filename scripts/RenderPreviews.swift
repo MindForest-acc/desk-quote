@@ -7,7 +7,7 @@ let corpus = Corpus.load()
 let outDir = URL(fileURLWithPath: CommandLine.arguments.count > 1 ? CommandLine.arguments[1] : ".")
 
 func render(_ quote: Quote, dark: Bool, note: Bool, scale: CGFloat = 2) -> NSImage {
-    let theme = Theme.of(book: quote.book, dark: dark)
+    let theme = Theme.of(book: quote.book, dark: dark).with(bodyFont: "STSongti-SC-Regular")
     let vertical = false
     let view = CardView(quote: quote, book: corpus.book(of: quote), theme: theme,
                         vertical: vertical, showNote: note,
